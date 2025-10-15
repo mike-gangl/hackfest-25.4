@@ -1,0 +1,25 @@
+{
+  "name": "fastmcp-node",
+  "version": "0.0.1",
+  "description": "Basic FastMCP implementation for the common metadata repository using Node.js",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "fastmcp": "^3.19.2",
+    "axios": "^1.6.0",
+    "zod": "^3.22.0"
+  },
+  "keywords": [
+    "mcp",
+    "fastmcp",
+    "nasa",
+    "cmr",
+    "metadata"
+  ],
+  "author": "",
+  "license": "MIT"
+}
