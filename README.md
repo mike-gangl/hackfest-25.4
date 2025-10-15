@@ -19,13 +19,19 @@ This section outlines the technology we've configured for you.
 
 This section has all the steps to run the example template and see all the required technology in action. You **don’t have to use it**—it’s for inspiration or guidance. 
 
-Clone the repository to your local environment
+### 1️⃣ Fork this repository
+
+Use the fork option in the left-hand panel of the Bitbucket UI to create a copy
+of the repository for your own project.
+
+Clone the forked repository to your local environment (replacing the URL below
+with your fork URL):
 
 ```
 git clone ssh://git@git.earthdata.nasa.gov:7999/ea/hackfest-25.4.git
 ```
 
-### 1️⃣ Choose your MCP implementation
+### 2️⃣ Choose your MCP implementation
 
 #### </> NodeJS
 
@@ -79,7 +85,7 @@ uv sync
 python server.py
 ```
 
-### 2️⃣ Run the chat client
+### 3️⃣ Run the chat client
 
 #### Install NVM
 
