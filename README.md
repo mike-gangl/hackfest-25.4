@@ -104,6 +104,9 @@ nvm use
 npm install
 ```
 
+Ensure region is set to us-east-1 (`export AWS_REGION=us-east-1`)
 ```bash
 npm run dev
 ```
+
+NOTE - If you get an error `Cannot find module @rollup/rollup-darwin-arm64.` run `rm -rf package-lock.json node_modules` the rerun the `npm install` and `npm run dev` above
