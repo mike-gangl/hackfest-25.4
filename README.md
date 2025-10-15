@@ -1,5 +1,11 @@
 # 25.4 Hackfest 🎉
 
+The theme for the PI 25.4 is AI. This repository provides infrastructure to set
+up a [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro)
+server, and a simple web UI to interact with that server. The starter
+template is configured to take input and perform a CMR collection search using
+[earthaccess](https://earthaccess.readthedocs.io/en/stable/).
+
 ## Provided Technology
 
 This section outlines the technology we've configured for you.
