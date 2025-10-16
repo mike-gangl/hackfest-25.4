@@ -19,7 +19,7 @@ export const DarkModeProvider = ({ children }: { children: ReactNode }) => {
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     // Default to false during SSR
-    return true;
+    return false;
   });
 
   useEffect(() => {

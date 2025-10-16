@@ -298,7 +298,7 @@ async def get_collections(keyword: str = '') -> list[DatasetSummary]:
           })}
         </div>
 
-        <div className="bg-card border-t border-card dark:border-neutral-700 p-4">
+        <div className="bg-card border-t border-neutral-400 dark:border-neutral-700 p-4">
           <form onSubmit={(e) => {
             e.preventDefault();
             if (!input.trim()) return;
