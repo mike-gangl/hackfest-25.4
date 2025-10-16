@@ -76,9 +76,24 @@ npm run dev
 
 ##### Install uv
 
+[uv](https://docs.astral.sh/uv/) is a Python package and project manager. It
+can be installed via a few methods, however
+[using homebrew](https://docs.astral.sh/uv/getting-started/installation/#homebrew)
+may work best on NASA-managed machines.
+
+```
+brew install uv
+```
+
+Alternative installation options are also available in the
+[documentation](https://docs.astral.sh/uv/getting-started/installation/),
+including:
+
 ```
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
+
+##### Create Python environment for the project
 
 ```
 cd mcp/fastmcp-python
