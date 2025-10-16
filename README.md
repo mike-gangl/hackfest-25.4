@@ -1,11 +1,11 @@
 # 25.4 Hackfest 🎉
 
-
 We’ve put together a starter repo that shows just how easy it is to build your own [Model Context Protocol (MCP)](https://modelcontextprotocol.io/docs/getting-started/intro) app. It comes with everything you need — a working MCP server (in both Node and Python), and a simple web UI that connects right to it.
 
 Using FastMCP, you can spin it up locally and start adding your own tools in minutes. All you have to do is write one function, and you’ve created a working AI tool.
 
 This hackfest is all about learning by doing:
+
 - See how AI tools plug into real applications
 - Experiment with adding your own functions
 - Get a feel for how MCP makes it simple to connect data, code, and AI models
@@ -39,7 +39,7 @@ git clone ssh://git@git.earthdata.nasa.gov:7999/ea/hackfest-25.4.git
 
 ### 2️⃣ Configure your AWS Keys
 
-> https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-envvars.html
+> <https://docs.aws.amazon.com/cli/v1/userguide/cli-configure-envvars.html>
 
 This project requires AWS Bedrock for minimal tool orchestration from the UI, in order to use that service you'll need to configure keys to an AWS account with necessary permissions.
 
@@ -111,7 +111,7 @@ uv sync
 ##### Run MCP Server
 
 ```bash
-python server.py
+uv run server.py
 ```
 
 ### 4️⃣ Run the chat client
@@ -138,4 +138,5 @@ npm run dev
 ```
 
 ### Debugging
+
 If you get an error `Cannot find module @rollup/rollup-darwin-arm64.` run `rm -rf package-lock.json node_modules` the rerun the `npm install` and `npm run dev` above

@@ -1,7 +1,7 @@
 import type { Route } from "./+types/home.js";
-import { Welcome } from "../welcome/welcome.js";
+import { Welcome } from "@components/welcome";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Hackfest" },
     { name: "description", content: "Welcome to the Hackfest!" },
