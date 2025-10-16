@@ -64,7 +64,7 @@ export function Welcome() {
                         <Card className="h-full transition-colors hover:bg-accent hover:text-accent-foreground">
                           <CardHeader>
                             <div className="flex flex-col gap-2">
-                              <link.icon className="h-5 w-5 text-secondary" />
+                              <link.icon className="h-5 w-5 text-primary" />
                               <CardTitle>{link.title}</CardTitle>
                             </div>
                             <CardDescription>{link.description}</CardDescription>
@@ -79,7 +79,7 @@ export function Welcome() {
           </div>
           <section className="pb-10">
             <h3 className="flex lg:items-center flex-col lg:flex-row gap-2 text-2xl font-bold tracking-tight mb-5">
-              <Brain className="text-secondary" />
+              <Brain className="text-primary" />
               Teach the MCP agent some new tricks by adding a tool
             </h3>
             <ol className="list-decimal">
