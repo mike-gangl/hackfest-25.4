@@ -47,6 +47,30 @@ This project requires AWS Bedrock for minimal tool orchestration from the UI, in
 
 **Ensure region is set to `us-east-1`**
 
+#### Using existing AWS Keys
+
+If you have existing access to an EDC AWS account, you can assume role into the account where we are providing access to AWS Bedrock.  To do this, use the normal method to get keys from kion and then run the following in your terminal:
+
+```bash
+export $(printf "AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s" \
+$(aws sts assume-role \
+--role-arn arn:aws:iam::325592785603:role/hackfest-25.4-bedrock \
+--role-session-name $(whoami) \
+--query "Credentials.[AccessKeyId,SecretAccessKey,SessionToken]" \
+--output text))
+```
+
+After running this command, your terminal will be logged in to the "dev15" EDC account rather than the account you started with, and will have access ONLY to the Bedrock models and actions required for this project.  Ensure the same terminal is used to start the agent in step 4️⃣.  The assumed credentials will be good for 12 hours and then will need to be refreshed, starting with your own AWS credentials then running the above command again.
+
+#### Using a Bedrock API Key
+
+If you do not have access to an EDC AWS account, fear not!  Contact Timothy Goff with your NASA AUID and we will provide you with a Bedrock API key.  This key will need to be stored in an environment variable in your terminal before you start the agent in step 4️⃣ as shown below:
+
+```bash
+export AWS_BEARER_TOKEN_BEDROCK=<TOKEN VALUE>
+```
+
+
 ### 3️⃣ Choose your MCP implementation
 
 #### </> NodeJS
