@@ -12,6 +12,8 @@ This hackfest is all about learning by doing:
 
 Whether you’re curious about AI or already deep in it, this is a fun way to explore how everything fits together. Bring your laptop, your ideas, and let’s build some AI magic together.
 
+![Screenshot of chat interface](screenshot.png "Interact with your MCP using the provided chat interface!")
+
 ## Provided Technology
 
 This section outlines the technology we've configured for you.

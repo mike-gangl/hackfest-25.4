@@ -33,7 +33,6 @@ export function LayoutWithProviders({ children }: { children: React.ReactNode })
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>MCP Playground | NASA EED Hackfest 25.3</title>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
         <Meta />
         <Links />
       </head>

@@ -3,7 +3,7 @@ import { DefaultChatTransport } from 'ai';
 import { useState } from 'react';
 import CodeExample from '@components/code-example';
 import { Button } from '~/components/ui/button.js';
-import { Card, CardDescription, CardHeader, CardTitle } from '~/components/ui/card.js';
+import { Card, CardDescription, CardHeader, CardNotes, CardTitle } from '~/components/ui/card.js';
 import NASALogo from '~/components/nasa-logo.js';
 import DarkModeToggle from '~/components/dark-mode-toggle.js';
 import { BookText, Brain, Check } from 'lucide-react';
@@ -56,9 +56,9 @@ export function Welcome() {
                 <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {
                     [
-                      { title: "FastMCP", icon: BookText, description: "Learn about the FastMCP server", href: "https://github.com/jlowin/fastmcp" },
-                      { title: "MCP Inspector", icon: BookText, description: "Admin interface allowing inspection the node MCP server", href: "https://github.com/modelcontextprotocol/inspector" },
-                      { title: "MCP 101", icon: BookText, description: "Learn more about MCP", href: "https://thenewstack.io/model-context-protocol-a-primer-for-the-developers/" },
+                      { title: "FastMCP", icon: BookText, description: "Learn about the FastMCP server configuration options and capabilities", href: "https://github.com/jlowin/fastmcp" },
+                      { title: "MCP Inspector", icon: BookText, description: "Admin interface allowing inspection of the MCP server", href: "https://github.com/modelcontextprotocol/inspector", notes: "Not currently working with the node MCP" },
+                      { title: "MCP 101", icon: BookText, description: "Learn more about MCP concepts and applications", href: "https://thenewstack.io/model-context-protocol-a-primer-for-the-developers/" },
                     ].map((link) => (
                       <a key={link.href} href={link.href}>
                         <Card className="h-full transition-colors hover:bg-accent hover:text-accent-foreground">
@@ -68,6 +68,11 @@ export function Welcome() {
                               <CardTitle>{link.title}</CardTitle>
                             </div>
                             <CardDescription>{link.description}</CardDescription>
+                            {
+                              link.notes && (
+                                <CardNotes>{link.notes}</CardNotes>
+                              )
+                            }
                           </CardHeader>
                         </Card>
                       </a>
@@ -82,18 +87,17 @@ export function Welcome() {
               <Brain className="text-primary" />
               Teach the MCP agent some new tricks by adding a tool
             </h3>
-            <ol className="list-decimal">
-              <li>
-                <h4 className="mb-2">Add a new tool to the MCP server</h4>
-                <p className="mb-4">First, add a new function to the python or node MCP server. This function will return the data to be displayed in the chat response. Below is an example of the get_collections tool in Python.</p>
-                <CodeExample
-                  examples={
-                    [
-                      {
-                        title: 'python',
-                        description: 'To add a new function to the python MCP server, use the @mcp.tool decorator and give it a function that returns the desired data.',
-                        filename: './mcp/fastmcp-python/server.py',
-                        content: `@mcp.tool(
+
+            <h4 className="mb-2 font-bold">Add a new tool to the MCP server</h4>
+            <p className="mb-4">First, add a new function to the python or node MCP server. This function will return the data to be displayed in the chat response. Below is an example of the get_collections tool in Python.</p>
+            <CodeExample
+              examples={
+                [
+                  {
+                    title: 'python',
+                    description: 'To add a new function to the python MCP server, use the @mcp.tool decorator and give it a function that returns the desired data.',
+                    filename: './mcp/fastmcp-python/server.py',
+                    content: `@mcp.tool(
   name="get_collections",
   description="Search NASA's Common Metadata Repository (CMR) collection records using full text search.",
   tags={"search"}
@@ -170,12 +174,10 @@ async def get_collections(keyword: str = '') -> list[DatasetSummary]:
     }
   }
 });`
-                      }
-                    ]
                   }
-                />
-              </li>
-            </ol>
+                ]
+              }
+            />
           </section>
         </div>
       </div>

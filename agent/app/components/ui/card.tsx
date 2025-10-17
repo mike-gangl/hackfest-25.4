@@ -48,6 +48,16 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+function CardNotes({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="card-notes"
+      className={cn("text-muted-foreground text-xs italic", className)}
+      {...props}
+    />
+  )
+}
+
 function CardAction({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -83,10 +93,11 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
   Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
   CardAction,
-  CardDescription,
   CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardNotes,
+  CardTitle,
 }
