@@ -2,7 +2,7 @@
 
 import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 import { bedrock } from '@ai-sdk/amazon-bedrock';
-import { experimental_createMCPClient } from 'ai';
+import { experimental_createMCPClient, stepCountIs } from 'ai';
 // @ts-ignore types are ESM-only in the SDK package
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js';
 
@@ -53,7 +53,8 @@ export const action = async function handler({ request }: { request: Request }) 
     model,
     messages: modelMessages,
     tools: mcpTools,
-    maxSteps: 5, // allow tool calls
+    // Limits the number of steps (including tool calls) to 5. Increase this number if your use case requires more tool calls or steps.
+    stopWhen: stepCountIs(5),
     // optional: system prompt
     // system: 'You are a helpful assistant.',
   });
