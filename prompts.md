@@ -15,19 +15,23 @@ In the above prompt, if you don't provide what you want _out_ of the code you as
 
 # umm-g Mappings
 ## Extract metadata
-```can you extract metadata from /Users/gangl/Downloads/TROPESS_CrIS-JPSS1_L2_Summary_PAN_20220219_MUSES_R1p23_SC_MGLOS_F2p9_J0.nc
+```
+can you extract metadata from /Users/gangl/Downloads/TROPESS_CrIS-JPSS1_L2_Summary_PAN_20220219_MUSES_R1p23_SC_MGLOS_F2p9_J0.nc
 ```
 
 ## To umm-g schema (all fields)
-```Can you map the above metadata to umm-g from the NASA CMR Schema? Please provide the mappings of the metadata keys to the umm-g schema keys?
+```
+Can you map the above metadata to umm-g from the NASA CMR Schema? Please provide the mappings of the metadata keys to the umm-g schema keys?
 ```
 
 ## To umm-g schema (all fields) (required fields)
-```Can you create a UMM-G CMR json file with only required fields? In general, if you're given 2 similarly named items with one as a 'date' and one as a 'time', you'll want to concatenate them in to a ISO 8601 datetime format.
+```
+Can you create a UMM-G CMR json file with only required fields? In general, if you're given 2 similarly named items with one as a 'date' and one as a 'time', you'll want to concatenate them in to a ISO 8601 datetime format.
 ```
 
 in the above sample, i needed to add instructions in the prompt to concatenate date and time fields.
 
 ## umm-g mapping
- ```Please provide the mappings of the metadata keys to the required umm-g schema keys?
+ ```
+ Please provide the mappings of the metadata keys to the required umm-g schema keys?
  ```
