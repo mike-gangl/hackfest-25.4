@@ -8,5 +8,6 @@ dependencies = [
     "fastmcp>=2.12.4",
     "earthaccess>=0.14.0",
     "starlette>=0.48.0",
-    "uvicorn>=0.37.0"
+    "uvicorn>=0.37.0",
+    "xarray"
 ]

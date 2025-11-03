@@ -2,6 +2,7 @@ import earthaccess
 import logging
 import traceback
 import uvicorn
+import requests
 
 from fastmcp import FastMCP
 from pydantic import BaseModel
@@ -71,6 +72,101 @@ async def get_collections(keyword: str = '') -> list[DatasetSummary]:
     collections = earthaccess.search_datasets(count=5,  **args )
     
     return [format_dataset(ds) for ds in collections]
+
+
+@mcp.tool(
+    name="check_compliance",
+    description="Check the metadata compliance of a file by using NASAs metadata compliance checker",
+    tags={"metadata"}
+)
+async def check_compliance(
+
+    file_path: str,
+    compliance: str= "CF",
+    compliance_version: str="1.7") -> str:
+    """Check the compliance of a file against the MCC
+
+    Args:
+        filepath: (Required) Location on the local filesystem of the file to upload
+        compliance: (Required) The compliance checks to run (e.g. CF, GDS2)
+        compliance_version: (Required) The version of the given compliance to use. (e.g. 1.7)
+
+    """
+    args = {}
+    if file_path is not None:
+         args['file_path'] = file_path
+    if compliance is not None:
+         args['compliance'] = compliance
+    if compliance_version is not None:
+         args['compliance_version'] = compliance_version
+
+    try:
+        # curl -L -F CF=on -F CF-version=1.7 -F file-upload=@20020901090000-JPL-L4_GHRSST-SSTfnd-MUR25-GLOB-v02.0-fv04.2.nc -F response=json https://mcc.podaac.earthdatacloud.nasa.gov/check
+        print("making request")
+        url = "https://mcc.podaac.earthdatacloud.nasa.gov/check"
+        form_data = {compliance:"on", "CF-version": compliance_version, "response":"json"}
+        resp = requests.post(url, data=form_data, files={'file-upload': open(file_path, 'rb')}, allow_redirects=True)
+        logger.debug(len(resp.json()))
+        #alerts = [format_dataset(feature) for feature in data["features"]]
+        return resp.json()
+
+
+
+    except:
+        import traceback
+        traceback.print_exc()
+
+        print("error!")
+
+@mcp.tool(
+    name="get_file_metadata",
+    description="Returns the metadata from a given netCDF file using xarray.",
+    tags={"metadata"},
+    output_schema=None
+)
+async def get_file_metadata(
+
+    file_path: str) -> str:
+    """return a list of the global metadata from a netCDF file
+
+    Args:
+        filepath: (Required) Location on the local filesystem of the file to get metatdata from
+
+    """
+    args = {}
+    if file_path is not None:
+         args['file_path'] = file_path
+    import xarray as xr
+
+    try:
+       ds = xr.open_dataset(file_path, engine="netcdf4")
+       metadata = ds.attrs
+       print(metadata)
+       return json.dumps(metadata, cls=NpEncoder)
+
+    except:
+        import traceback
+        traceback.print_exc()
+        print("error!")
+
+
+import json
+import numpy as np
+
+class NpEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, np.integer):
+            return int(obj)
+        if isinstance(obj, np.floating):
+            return float(obj)
+        if isinstance(obj, np.ndarray):
+            return obj.tolist()
+        return super(NpEncoder, self).default(obj)
+
+# Your codes .... 
+
+
+
 
 if __name__ == "__main__":
 
